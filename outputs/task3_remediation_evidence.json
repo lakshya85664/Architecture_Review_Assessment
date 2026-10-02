@@ -1,0 +1,19 @@
+{
+  "task": "Task 3 - Focused Remediation",
+  "finding": "Agent workflow state was not durably persisted across a process restart.",
+  "remediation": "Added a small JSON DurableStateStore with validation and atomic replacement of the state file.",
+  "before": {
+    "state_after_restart": null,
+    "result": "state lost"
+  },
+  "after": {
+    "state_after_restart": {
+      "goal": "complete architecture review",
+      "status": "running",
+      "step_count": 3
+    },
+    "result": "state recovered"
+  },
+  "regression_status": "fixed",
+  "residual_risk": "Local JSON persistence is appropriate for this assessment, but production multi-process durability would require a stronger storage boundary."
+}

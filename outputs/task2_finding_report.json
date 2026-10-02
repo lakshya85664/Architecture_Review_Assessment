@@ -1,0 +1,24 @@
+{
+  "task": "Task 2 - Finding Reproduction",
+  "finding_statement": "Agent workflow state is not durably persisted across a process restart in the reviewed architecture boundary.",
+  "severity": "medium",
+  "evidence": {
+    "task": "Task 2 - Finding Reproduction",
+    "reproduction_status": "reproduced",
+    "finding": "Agent workflow state is not durably persisted across a process restart in the reviewed architecture boundary.",
+    "area": "persistence",
+    "severity": "medium",
+    "expected": "A restart should allow the workflow state to be recovered when durable persistence is required.",
+    "observed": "Workflow state was present before restart but was unavailable from the new process boundary.",
+    "impact": "A process interruption can require the workflow to restart from lost in-memory state unless an external durable state mechanism is introduced.",
+    "reproduction": "Create AgentState, save it to the in-memory boundary, replace the boundary with a new instance, and attempt to load the previous state.",
+    "evidence": {
+      "state_before_restart": {
+        "goal": "complete architecture review",
+        "status": "running",
+        "step_count": 3
+      },
+      "state_after_restart": null
+    }
+  }
+}
